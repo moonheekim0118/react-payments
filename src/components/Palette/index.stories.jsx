@@ -14,7 +14,7 @@ export default {
 
 const Template = (args) => <Palette {...args} />;
 
-const closeModal = () => {};
+const closeModal = () => null;
 
 export const Example = Template.bind({});
 

@@ -1,9 +1,10 @@
 import React from 'react';
 import * as Styled from './index.styled';
+import { TCard } from '../../../types';
 
 interface Props {
   color: string;
-  name: string;
+  name: TCard;
   onClick: () => void;
 }
 

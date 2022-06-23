@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import * as Styled from './index.styled';
 
 interface Props {
-  onChangeFirstCardNumber: () => void;
-  onChangeSecondCardNumber: () => void;
-  onChangeThirdCardNumber: () => void;
-  onChangeFourthCardNumber: () => void;
+  onChangeFirstCardNumber: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeSecondCardNumber: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeThirdCardNumber: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeFourthCardNumber: (e: React.ChangeEvent<HTMLInputElement>) => void;
   firstCardNumber: string;
   secondCardNumber: string;
   thirdCardNumber: string;

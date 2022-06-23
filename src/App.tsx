@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import { Loading, AddCard, RegisterCard, CardList, NotFound } from './pages';
@@ -10,9 +10,9 @@ const App = () => {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path={PATH.ADD_CARD} exact element={<AddCard />} />
-          <Route path={PATH.REGISTER_CARD} exact element={<RegisterCard />} />
-          <Route path={PATH.HOME} exact element={<CardList />} />
+          <Route path={PATH.ADD_CARD} element={<AddCard />} />
+          <Route path={PATH.REGISTER_CARD} element={<RegisterCard />} />
+          <Route path={PATH.HOME} element={<CardList />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

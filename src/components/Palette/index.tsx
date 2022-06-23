@@ -1,15 +1,20 @@
-import PropTypes from 'prop-types';
+import React from 'react';
 import ColorPicker from './ColorPicker';
 import * as Styled from './index.styled';
 import { CARD_TYPE } from '../../constant';
+import { TCard } from '../../types';
 import { useCardFormContext, ACTION } from '../../context/card-form-context';
 
-const CARD_LIST1 = ['롯데카드', '삼성카드', 'NH농협카드', '신한카드'];
-const CARD_LIST2 = ['현대카드', '하나카드', 'BC카드', 'KB국민카드'];
+const CARD_LIST1: TCard[] = ['롯데카드', '삼성카드', 'NH농협카드', '신한카드'];
+const CARD_LIST2: TCard[] = ['현대카드', '하나카드', 'BC카드', 'KB국민카드'];
 
-const Palette = ({ closeModal }) => {
+interface Props {
+  closeModal: () => void;
+}
+
+const Palette = ({ closeModal }: Props) => {
   const { dispatch } = useCardFormContext();
-  const onClickCardSelector = (name) => () => {
+  const onClickCardSelector = (name: TCard) => () => {
     dispatch({
       type: ACTION.SET_CARD_TYPE,
       data: { cardType: name },
@@ -41,10 +46,6 @@ const Palette = ({ closeModal }) => {
       </Styled.ColorPickerContainer>
     </Styled.Container>
   );
-};
-
-Palette.propTypes = {
-  closeModal: PropTypes.func,
 };
 
 export default Palette;

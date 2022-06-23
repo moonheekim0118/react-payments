@@ -1,3 +1,5 @@
+import { TInputScale, TApiMethod } from '../types';
+
 export const PATH = {
   HOME: '/',
   ADD_CARD: '/addCard',
@@ -7,7 +9,7 @@ export const PATH = {
 export const ENDPOINT =
   'https://moonheekim-payments-server.herokuapp.com/cards';
 
-export const METHODS = {
+export const METHODS: Record<string, TApiMethod> = {
   GET: 'GET',
   POST: 'POST',
 };
@@ -28,10 +30,10 @@ export const CARD_TYPE = {
   KB국민카드: { color: '#FBCD58' },
 } as const;
 
-export const INPUT_SCALE_TYPE = {
-  large: '318',
-  medium: '84',
-  small: '43',
+export const INPUT_SCALE_TYPE: Record<TInputScale, number> = {
+  large: 318,
+  medium: 84,
+  small: 43,
 } as const;
 
-export const INPUT_SCALE_NAMES = ['large', 'medium', 'small'];
+export const INPUT_SCALE_NAMES: TInputScale[] = ['large', 'medium', 'small'];

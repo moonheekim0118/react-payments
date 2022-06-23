@@ -5,7 +5,6 @@ import * as Styled from './index.styled';
 
 interface Props {
   id: string;
-  children: React.ReactNode;
   description: string;
   errorMessage: string;
   isError: boolean;
@@ -17,7 +16,7 @@ const FieldSet = ({
   children,
   errorMessage,
   isError,
-}: Props) => {
+}: React.PropsWithChildren<Props>) => {
   return (
     <Styled.Container>
       <Label id={id} description={description} />

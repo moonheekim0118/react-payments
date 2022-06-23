@@ -1,18 +1,26 @@
 import { useState } from 'react';
 
-const useInputValue = ({ isValidateInput, isInputAvailableValue } = {}) => {
+interface Props {
+  isValidateInput: (value: string) => boolean;
+  isInputAvailableValue: (value: string) => boolean;
+}
+
+const useInputValue = ({
+  isValidateInput,
+  isInputAvailableValue,
+}: Partial<Props> = {}) => {
   const [value, setValue] = useState('');
   const [isError, setError] = useState(false);
 
-  const onChangeValue = ({ target }) => {
-    const value = target.value;
+  const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
     if (
       isInputAvailableValue &&
       !isInputAvailableValue(value) &&
       value.length !== 0
     )
       return;
-    setValue(target.value);
+    setValue(value);
     if (isValidateInput && !isValidateInput(value)) {
       setError(true);
       return;
@@ -20,7 +28,7 @@ const useInputValue = ({ isValidateInput, isInputAvailableValue } = {}) => {
     setError(false);
   };
 
-  return [value, isError, onChangeValue];
+  return [value, isError, onChangeValue] as const;
 };
 
 export default useInputValue;

@@ -1,5 +1,5 @@
 import { CardFormProvider } from '../../context/card-form-context';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Layout } from '../index.styled';
 import AddCardForm from '../../components/AddCardForm';
 import Modal from '../../components/Modal';

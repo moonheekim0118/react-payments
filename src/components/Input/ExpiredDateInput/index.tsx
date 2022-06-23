@@ -5,8 +5,8 @@ import * as Styled from './index.styled';
 interface Props {
   expiredMonth: string;
   expiredYear: string;
-  onChangeExpiredMonth: () => void;
-  onChangeExpiredYear: () => void;
+  onChangeExpiredMonth: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeExpiredYear: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const ExpiredDateInput = ({

@@ -1,15 +1,16 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useInputValue from '../../hooks/useInputValue';
 import useAPI from '../../hooks/useAPI';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import * as Styled from './index.styled';
+import { TCardInfo } from '../../types';
 import { ENDPOINT, METHODS, PATH } from '../../constant';
 
 const RegisterCard = () => {
   const navigate = useNavigate();
-  const state = useLocation().state;
+  const state = useLocation().state as TCardInfo;
 
   const { isLoading, apiRequest, isError } = useAPI({
     uri: ENDPOINT,

@@ -4,7 +4,6 @@ import { TCard } from '../../types';
 import * as Styled from './index.styled';
 
 interface Props {
-  name: string;
   ownerName: string;
   expiredMonth: string;
   expiredYear: string;
@@ -13,7 +12,7 @@ interface Props {
   thirdCardNumber: string;
   fourthCardNumber: string;
   cardType: TCard;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Card = ({

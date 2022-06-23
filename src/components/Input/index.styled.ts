@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import { TInputScale } from '../../types';
+
 import { INPUT_SCALE_TYPE } from '../../constant';
 
-export const Container = styled.input<{ scale: 'large' | 'medium' | 'small' }>`
+export const Container = styled.input<{ scale: TInputScale }>`
   text-align: center;
   width: ${({ scale }) => INPUT_SCALE_TYPE[scale]}px;
   height: 45px;

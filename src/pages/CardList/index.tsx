@@ -1,11 +1,17 @@
-import { useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Layout } from '../index.styled';
 import useAPI from '../../hooks/useAPI';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 import { ENDPOINT, METHODS, PATH } from '../../constant';
+import { TCardInfo } from '../../types';
 import * as Styled from './index.styled';
+
+interface TResponse extends TCardInfo {
+  id: string;
+  alias: string;
+}
 
 const CardList = () => {
   const navigate = useNavigate();
@@ -14,7 +20,7 @@ const CardList = () => {
     response: cardList,
     apiRequest,
     isError,
-  } = useAPI({
+  } = useAPI<TResponse[]>({
     uri: ENDPOINT,
     method: METHODS.GET,
   });
@@ -52,7 +58,6 @@ const CardList = () => {
               ownerName,
               expiredMonth,
               expiredYear,
-              secureCode,
             }) => (
               <div key={id}>
                 <Card
@@ -64,7 +69,6 @@ const CardList = () => {
                   ownerName={ownerName}
                   expiredMonth={expiredMonth}
                   expiredYear={expiredYear}
-                  secureCode={secureCode}
                 />
                 <Styled.CardAlias>{alias}</Styled.CardAlias>
               </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCardFormContext } from '../../context/card-form-context';
 import { pareCardFormState } from '../../utils';
 import { PATH } from '../../constant';
@@ -14,7 +14,11 @@ import ErrorMessage from '../ErrorMessage';
 import PropTypes from 'prop-types';
 import * as Styled from './index.styled';
 
-const AddCardForm = ({ openModal }) => {
+interface Props {
+  openModal: () => void;
+}
+
+const AddCardForm = ({ openModal }: Props) => {
   const { state } = useCardFormContext();
 
   const [isSubmittAble, setSubmittAble] = useState(false);

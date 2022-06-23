@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
 import * as Styled from './index.styled';
-
 interface Props {
   children: React.ReactNode;
 }

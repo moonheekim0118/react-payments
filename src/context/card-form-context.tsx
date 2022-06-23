@@ -1,7 +1,32 @@
-import { createContext, useContext, useReducer } from 'react';
-import PropTypes from 'prop-types';
+import React, { createContext, useContext, useReducer } from 'react';
+import { TCard } from '../types';
 
-const initialState = {
+interface TState {
+  firstCardNumber: string;
+  secondCardNumber: string;
+  thirdCardNumber: string;
+  fourthCardNumber: string;
+  isInitialCardNumber: boolean;
+  isCardNumberError: boolean;
+  ownerName: string;
+  isInitialOwnerName: boolean;
+  isOwnerNameError: boolean;
+  secureCode: string;
+  isInitialSecureCode: boolean;
+  isSecureCodeError: boolean;
+  expiredMonth: string;
+  expiredYear: string;
+  isInitialExpiredDate: boolean;
+  isExpiredDateError: boolean;
+  firstPassword: string;
+  secondPassword: string;
+  isInitialPassword: boolean;
+  isPasswordError: boolean;
+  cardType: TCard;
+  isCardTypeSelected: boolean;
+}
+
+const initialState: TState = {
   firstCardNumber: '',
   secondCardNumber: '',
   thirdCardNumber: '',
@@ -38,11 +63,29 @@ const ACTION = {
   SET_PASSWORD: 'SET_PASSWORD',
   SET_PASSWORD_ERROR: 'SET_PASSWORD_ERROR',
   SET_CARD_TYPE: 'SET_CARD_TYPE',
-};
+} as const;
+
+type TActionType =
+  | 'SET_CARD_NUMBERS'
+  | 'SET_CARD_NUMBERS_ERROR'
+  | 'SET_OWNER_NAME'
+  | 'SET_OWNER_NAME_ERROR'
+  | 'SET_SECURE_CODE'
+  | 'SET_SECURE_CODE_ERROR'
+  | 'SET_EXPIRED_DATE'
+  | 'SET_EXPIRED_DATE_ERROR'
+  | 'SET_PASSWORD'
+  | 'SET_PASSWORD_ERROR'
+  | 'SET_CARD_TYPE';
+
+interface TAction {
+  type: TActionType;
+  data?: any;
+}
 
 const CardFormContext = createContext(initialState);
 
-const cardFormReducer = (state, action) => {
+const cardFormReducer = (state: TState, action: TAction) => {
   switch (action.type) {
     case ACTION.SET_CARD_NUMBERS: {
       const {
@@ -133,10 +176,19 @@ const cardFormReducer = (state, action) => {
   }
 };
 
-const CardFormProvider = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+interface TValue {
+  state: TState;
+  dispatch: (action: TAction) => void;
+}
+
+const CardFormProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(cardFormReducer, initialState);
 
-  const value = { state, dispatch };
+  const value: TValue = { state, dispatch };
 
   return (
     <CardFormContext.Provider value={value}>
@@ -146,12 +198,8 @@ const CardFormProvider = ({ children }) => {
 };
 
 const useCardFormContext = () => {
-  const context = useContext(CardFormContext);
+  const context = useContext(CardFormContext) as TValue;
   return context;
-};
-
-CardFormProvider.propTypes = {
-  children: PropTypes.element,
 };
 
 export { CardFormProvider, useCardFormContext, ACTION };

@@ -4,7 +4,7 @@ import * as Styled from './index.styled';
 interface Props {
   children: React.ReactNode;
   to: string;
-  state: unknown;
+  state?: unknown;
 }
 
 const Link = ({ children, ...rest }: Props) => {

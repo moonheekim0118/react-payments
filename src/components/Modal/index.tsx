@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import * as Styled from './index.styled';
 
 interface Props {
-  children: React.ReactNode;
   isModalOpened: boolean;
   closeModal: () => void;
 }
 
-const Modal = ({ children, isModalOpened, closeModal }: Props) => {
+const Modal = ({
+  children,
+  isModalOpened,
+  closeModal,
+}: React.PropsWithChildren<Props>) => {
   const root = document.getElementById('modal-root');
 
   return isModalOpened && root

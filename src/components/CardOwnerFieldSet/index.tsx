@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import useInputValue from '../../hooks/useInputValue';
 import FieldSet from '../FieldSet';
 import Input from '../Input';
@@ -6,7 +6,7 @@ import { checkOwnerName } from '../../validation';
 import { ACTION, useCardFormContext } from '../../context/card-form-context';
 import * as Styled from './index.styled';
 
-const showOwnerNameLength = (length) => {
+const showOwnerNameLength = (length: number) => {
   return `${length}`.padStart(2, '0');
 };
 

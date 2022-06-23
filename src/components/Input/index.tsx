@@ -1,8 +1,9 @@
 import React from 'react';
 import * as Styled from './index.styled';
+import { TInputScale } from '../../types';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  scale: 'large' | 'medium' | 'small';
+  scale: TInputScale;
 }
 
 const Input = ({ scale, ...rest }: Props) => {
